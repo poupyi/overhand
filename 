@@ -1,0 +1,37 @@
+premier version
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   src/app/app.component.js
+#	new file:   src/app/app.component.js.map
+#	new file:   src/app/app.component.spec.js
+#	new file:   src/app/app.component.spec.js.map
+#	modified:   src/app/app.component.spec.ts
+#	modified:   src/app/app.component.ts
+#	new file:   src/app/app.module.js
+#	new file:   src/app/app.module.js.map
+#	modified:   src/app/app.module.ts
+#	new file:   src/app/css/main.css
+#	new file:   src/app/models/Dinosaurs.model.js
+#	new file:   src/app/models/Dinosaurs.model.js.map
+#	new file:   src/app/models/Dinosaurs.model.ts
+#	new file:   src/app/services/dinoServices.js
+#	new file:   src/app/services/dinoServices.js.map
+#	new file:   src/app/services/dinoServices.ts
+#	new file:   src/app/templates/test.html
+#	modified:   src/index.html
+#	new file:   src/main.js
+#	new file:   src/main.js.map
+#	modified:   src/main.ts
+#	modified:   src/styles.css
+#	new file:   src/systemjs-angular-loader.js
+#	new file:   src/systemjs.config.extras.js
+#	new file:   src/systemjs.config.js
+#	modified:   src/tsconfig.json
+#	new file:   src/util/logger.service.js
+#	new file:   src/util/logger.service.js.map
+#	new file:   src/util/logger.service.ts
+#
