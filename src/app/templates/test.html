@@ -1,0 +1,93 @@
+<div class="container">
+  <div *ngIf="error == true" class="alert alert-info"><h1>{{ErrorMsg}}</h1></div>
+  <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+    <button style="margin-left: 15%" class="col-md-4" class="btn btn-info btn-lg" (click)="currentPage = 1">Page de listing</button>
+    <button style="margin-left: 15%" class="col-md-4" class="btn btn-info btn-lg" (click)="currentPage = 2">Page Ajout/Supp</button>
+    <button style="margin-left: 15%" class="col-md-4" class="btn btn-info btn-lg" (click)="currentPage = 3">Page modification</button>
+  </div>
+
+  <div *ngIf="currentPage==1">
+    <div><p style="font-size: 30px; font-style: bold;">Dinosaurs list</p>
+      <div class="row" *ngFor="let dino of _dinos, let i = index" style="margin-bottom: 20px;">
+        <!-- <div class="col-md-0.5"><img src="http://139.162.121.14/api{{dino.picture}}"></div> -->
+        <div class="col-md-1"><b>name:</b> {{dino.name}}</div>
+        <div style="margin-right: 5px;" class="col-md-2"><b>id:</b> {{dino._id}}</div>
+        <div class="col-md-2"><b>createdAt:</b> {{dino.createdAt}}</div>
+        <div class="col-md-2"><b>updatedAt:</b> {{dino.updatedAt}}</div>
+        <div class="col-md-2"><b>description:</b> {{dino.description}}</div>
+        <!-- <div class="col-md-0.5"><b>__v:</b> {{dino.__v}}</div> -->
+        <div class="col-md-1"><b>diet_type:</b>
+          <span *ngIf="dino.diet_type==1">Herbivore</span>
+          <span *ngIf="dino.diet_type==2">Carnivore</span>
+          <span *ngIf="dino.diet_type==3">Omnivore</span>
+        </div>
+        <div class="col-md-1"><button class="btn btn-primary" (click)="delDino(dino._id)">Delete</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="currentPage==2">
+    <div class="row">
+      <div class="col-md-6"><p style="font-size: 30px; font-style: bold;">Add Dinosaur</p>
+        <form class="col-md-6">
+          <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" name="name" placeholder="Name" [(ngModel)]="newDino.name"/>
+          </div>
+          <div class="form-group">
+            <label>Diet_Type:</label>
+            <select class="form-control" name="diet_type" [(ngModel)]="newDino.diet_type">
+              <option value="1">Herbivore</option>
+              <option value="2">Carnivore</option>
+              <option value="3">Omnivore</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Description:</label>
+            <textarea class="form-control" name="description" placeholder="Description" [(ngModel)]="newDino.description"></textarea>
+          </div>
+          <button class="btn btn-primary" (click)="addDino()">Add</button>
+        </form>
+      </div>
+
+      <div class="col-md-6"><p style="font-size: 30px; font-style: bold;">Delete Dinosaur</p>
+        <input [(ngModel)]="selectedId" placeholder="ID you want to delete">
+        <button class="btn btn-primary" (click)="delDino(selectedId)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="currentPage==3">
+    <div><p style="font-size: 30px; font-style: bold;">Load Specific Dinosaur</p>
+    <input [(ngModel)]="selectedId" placeholder="ID you want to see/modif">
+    <button class="btn btn-primary" (click)="loadDino(selectedId)">Load</button>
+
+    <div class="row" *ngIf="loaded==true" style="margin-left: 0px;">
+      <form>
+        <p style="font-size: 30px; font-style: bold;">Loaded Dinosaur</p>
+        <!-- <div><img src="http://139.162.121.14/api{{loadedDino.picture}}"></div> -->
+        <div class="row form-group">
+          <div class="col-md-3"><label>Name:</label> <input name="name2" [(ngModel)]="loadedDino.name" value={{loadedDino.name}}/></div>
+          <div class="col-md-3"><label>ID:</label> {{loadedDino._id}}</div>
+          <div class="col-md-3"><label>CreatedAt:</label> {{loadedDino.createdAt}}</div>
+          <div class="col-md-3"><label>UpdatedAt:</label> {{loadedDino.updatedAt}}</div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-5"><label>Description:</label>
+            <textarea rows="4" cols="50" name ="description2" [(ngModel)]="loadedDino.description" value=<input value={{loadedDino.description}}></textarea>
+          </div>
+          <!-- <div><b>__v:</b> <input [(ngModel)]="loadedDino.__v" value={{loadedDino.__v}}/></div> -->
+          <div class="col-md-3">
+            <label>Diet_Type</label>
+            <select name="diet_type2" [(ngModel)]="loadedDino.diet_type">
+              <option value="1"[selected]="value==loadedDino.diet_type">Herbivore</option>
+              <option value="2"[selected]="value==loadedDino.diet_type">Carnivore</option>
+              <option value="3"[selected]="value==loadedDino.diet_type">Omnivore</option>
+            </select>
+          </div>
+          <div class="col-md-3"><button class="btn btn-lg btn-primary" (click)="updateDino()">Update</button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

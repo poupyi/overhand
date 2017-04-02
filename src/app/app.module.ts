@@ -1,20 +1,16 @@
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { AppComponent }  from './app.component';
+import { DinoService } from './services/dinoServices';
+import { HttpModule, Response} from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports:      [ HttpModule, BrowserModule, FormsModule],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: [DinoService],
+
 })
 export class AppModule { }
